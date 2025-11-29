@@ -28,9 +28,18 @@ end
 local function draw(t)
   local n = #t
   if n == 0 then return nil end
-  local v = t[n]
+  local card = t[n]
   t[n] = nil
-  return v
+  local suit = string.sub(card, -1)
+  card = string.sub(s, 1, -2)
+  local value = 0
+    if card == "J" or card == "Q" or card == "K" then
+        value = 10
+    elseif card == "A" then
+        value = 0
+    else
+        value = tonumber(card)
+  return {suit,value}
 end
 
 local players = {}
@@ -64,8 +73,8 @@ end
 
 -- Game state
 local playerTotal = 0
-local dealerTotal = draw() + draw()
-playerTotal = draw() + draw()
+local dealerTotal = draw(deck)[2] + draw(deck)[2]
+playerTotal = draw(deck)[2] + draw(deck)[2]
 
 local function drawUI()
   mon.clear()
@@ -81,7 +90,7 @@ while true do
   local ev, side, x, y = os.pullEvent("monitor_touch")
   if inside(btnHit,x,y) then
     drawButton(btnHit, true); sleep(0.12); drawButton(btnHit,false)
-    local v = draw(); playerTotal = playerTotal + v
+    local v = draw(deck)[2]; playerTotal = playerTotal + v
     drawUI()
     if playerTotal > 21 then
       mon.setCursorPos(2,6); mon.setTextColor(colors.red); mon.write("BUST! You lose.")
@@ -91,7 +100,7 @@ while true do
     drawButton(btnStand, true); sleep(0.12); drawButton(btnStand,false)
     -- simple dealer behavior: draw until 17
     while dealerTotal < 17 do
-      dealerTotal = dealerTotal + draw()
+      dealerTotal = dealerTotal + draw(deck)[2]
     end
     drawUI()
     if dealerTotal > 21 or playerTotal > dealerTotal then
