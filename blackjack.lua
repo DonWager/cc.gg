@@ -43,12 +43,13 @@ local function draw(t)
   return {suit,value}
 end
 
-local players = {}
+-- Monitor Stuff
 local mon = peripheral.wrap("right") or error("Monitor not found on right")
 print(mon.getSize()) --29 12
 local native = term.native()
 term.redirect(mon)
 mon.setTextScale(1)
+mon.setBackgroundColor(colors.black)
 mon.clear()
 math.randomseed(os.time()+math.floor(os.time()*1000))
 
