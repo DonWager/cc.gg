@@ -7,12 +7,31 @@ local hopperLights = {
 }
 -- Init von allen Lampen
 local frontRow = {
-
+    peripheral.wrap("redstone_relay_0")
 }
-local middleLight = {}
 local leftRow = {}
 local rightRow = {}
 local backRow = {}
+
+-- Fill frontRow with numbers 1-19
+for i = 2, 19 do
+    frontRow[i] = peripheral.wrap("redstone_relay_" .. i)
+end
+
+-- Fill rightRow with numbers 20-37
+for i = 20, 37 do
+    rightRow[i - 19] = peripheral.wrap("redstone_relay_" .. i)
+end
+
+-- Fill backRow with numbers 38-54
+for i = 38, 54 do
+    backRow[i - 37] = peripheral.wrap("redstone_relay_" .. i)
+end
+
+-- Fill leftRow with numbers 55-72
+for i = 55, 72 do
+    leftRow[i - 54] = peripheral.wrap("redstone_relay_" .. i)
+end
 
 -- Autocomplete Function
 function autocomplete(input)
@@ -46,7 +65,7 @@ end
 
 function main()
     while true do
-        local query = readAutoComplete()
+        local query = readAutocomplete()
     end
 end
 
