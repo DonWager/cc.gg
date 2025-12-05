@@ -1,13 +1,8 @@
 -- Hoppelichter Bsp.: "Redstone" = {row="front",pos="3",dir="left",light=peripheral.wrap(minecraft:redstone_light_2)}
-local hopperLights = {
-    Inferium_1 = {row="front",pos="1",dir="left",light=peripheral.wrap("redstone_relay_1")},
-    Inferium_2 = {row="front",pos="1",dir="left",light=peripheral.wrap("redstone_relay_1")},
-    Inferium_3 = {row="front",pos="2",dir="right",light=peripheral.wrap("redstone_relay_1")},
-    Inferium_4 = {row="front",pos="2",dir="left",light=peripheral.wrap("redstone_relay_1")}
-}
+local seedIndex = require("seedIndex")
 -- Init von allen Lampen
 local frontRow = {
-    peripheral.wrap("redstone_relay_0")
+    peripheral.wrap("redstone_relay_0") -- Da das erst Relay nicht 1 sondern 0 ist, die 1 ist das erste der Rechten SeedLights, weil ich die erst Reihe für Reihe platziert habe
 }
 local leftRow = {}
 local rightRow = {}
@@ -36,7 +31,7 @@ end
 -- Autocomplete Function
 function autocomplete(input)
     local suggestions = {}
-    for name, data in ipairs(hopperLights) do
+    for name, data in ipairs(seedIndex) do
         if string.sub(name, 1, string.len(input)) == input then
             table.insert(suggestions, name)
         end
