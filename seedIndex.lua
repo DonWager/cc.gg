@@ -70,5 +70,5 @@ return {
     Steeleaf = {row="left",pos="13",dir="left",light=peripheral.wrap("redstone_relay_130")},
     Vibranium = {row="left",pos="14",dir="left",light=peripheral.wrap("redstone_relay_131")},
     Xychorium Gem = {row="left",pos="15",dir="left",light=peripheral.wrap("redstone_relay_132")},
-    Coral = {row="left",pos="16",dir="left",light=peripheral.wrap("redstone_relay_133")},
+    Coral = {row="left",pos="16",dir="left",light=peripheral.wrap("redstone_relay_133")}
 }
