@@ -30,7 +30,6 @@ end
 
 -- Autocomplete Function
 function autocomplete(input)
-    if input == nil or input == "" then return {} end
     local suggestions = {}
     for name, data in pairs(seedIndex) do
         if string.sub(name, 1, string.len(input)) == input then
@@ -52,7 +51,7 @@ function readAutocomplete()
         local suggestions = autocomplete(input)
         if #suggestions > 0 then
             print("")
-            for i = 1, math.min(17, #suggestions) do
+            for i = 1, #suggestions do
                 if i == selectedSuggestion then
                     term.setBackgroundColor(colors.white)
                     term.setTextColor(colors.black)
@@ -83,7 +82,7 @@ function readAutocomplete()
                     return suggestions[selectedSuggestion], seedIndex[suggestions[selectedSuggestion]]
                 end
             elseif a == keys.down then
-                selectedSuggestion = math.min(selectedSuggestion + 1, #suggestions, 17)
+                selectedSuggestion = math.min(selectedSuggestion + 1, #suggestions)
             elseif a == keys.up then
                 selectedSuggestion = math.max(selectedSuggestion - 1, 0)
             end
