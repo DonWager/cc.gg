@@ -42,6 +42,7 @@ end
 function readAutocomplete()
     local input = ""
     term.clear()
+    term.setCursorPos(1,1)
     term.write(">")
     while true do
         local event, key = os.pullEvent("char")
