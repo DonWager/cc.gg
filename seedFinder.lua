@@ -41,13 +41,13 @@ end
 
 function readAutocomplete()
     local input = ""
-    term.setCursorPos(1,1)
     while true do
         local event, key = os.pullEvent("char")
         term.clear()
+        term.setCursorPos(1,1)
         if key == "\n" then
             return input
-        elseif key == "\27" then
+        elseif key == "\b" then
             input = input:sub(1, -2) -- Handle backspace
         else
             input = input .. key
@@ -55,6 +55,7 @@ function readAutocomplete()
         -- Get suggestions
         local suggestions = autocomplete(input)
         if #suggestions > 0 then
+            print("suggetions are met")
             for _, suggestion in ipairs(suggestions) do
                 term.write(suggestion .. "\n")
             end
