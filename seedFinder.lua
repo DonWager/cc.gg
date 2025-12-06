@@ -50,7 +50,7 @@ function readAutocomplete()
         local suggestions = autocomplete(input)
         if #suggestions > 0 then
             print("")
-            for _, suggestion in ipairs(suggestions) do print(suggestion) end
+            for i = 1, math.min(17, #suggestions) do print(suggestions[i]) end
             term.setCursorPos(4 + string.len(input), 1)
         end
         
