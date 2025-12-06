@@ -75,7 +75,13 @@ function readAutocomplete()
             if a == keys.backspace then
                 if #input > 0 then input = string.sub(input, 1, -2) end
             elseif a == keys.enter then
-                return input
+                if selectedSuggestion == 0 then
+                    if #suggestions == 1 then
+                        return suggestions[1]
+                    end
+                else
+                    return suggestions[selectedSuggestion]
+                end
             elseif a == keys.down then
                 selectedSuggestion = math.min(selectedSuggestion + 1, #suggestions, 17)
             elseif a == keys.up then
@@ -90,7 +96,8 @@ function main()
     term.clear()
     while true do
         local query = readAutocomplete()
-        print("You entered: " .. query)
+        term.clear()
+        print("If the lights would work, you would have Searched for: " .. query)
         os.sleep(10)
     end
 end
