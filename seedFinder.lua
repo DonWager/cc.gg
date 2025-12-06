@@ -45,7 +45,7 @@ function readAutocomplete()
     while true do
         term.clear()
         term.setCursorPos(1,1)
-        term.write("> " .. input)
+        term.write("> " .. input .. "_")
         local event, a = os.pullEvent()
         if event == "char" then
             input = input .. a
@@ -62,7 +62,7 @@ function readAutocomplete()
         if #suggestions > 0 then
             print("")
             for _, suggestion in ipairs(suggestions) do print(suggestion) end
-            term.setCursorPos(3 + string.len(input), 1)
+            term.setCursorPos(4 + string.len(input), 1)
         end
     end
 end
