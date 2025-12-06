@@ -30,6 +30,7 @@ end
 
 -- Autocomplete Function
 function autocomplete(input)
+    if input == nil or input == "" then return {} end
     local suggestions = {}
     for name, data in pairs(seedIndex) do
         if string.sub(name, 1, string.len(input)) == input then
