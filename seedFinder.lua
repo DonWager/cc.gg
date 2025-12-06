@@ -45,7 +45,7 @@ function readAutocomplete()
         local event, key = os.pullEvent("char")
 
         if key == "\n" then
-            break
+            return input
         elseif key == "\27" then
             input = input:sub(1, -2) -- Handle backspace
             term.write("\b \b") -- Move back, print space, and move back again
@@ -61,7 +61,7 @@ function readAutocomplete()
             for _, suggestion in ipairs(suggestions) do
                 term.write(suggestion .. "\n")
             end
-            term.write("\n" .. prompt .. input) -- Reprint the prompt with current input
+            term.write("\n" .. input) -- Reprint the prompt with current input
         end
     end
 end
