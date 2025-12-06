@@ -60,7 +60,7 @@ function readAutocomplete()
                     term.setBackgroundColor(colors.black)
                     term.setTextColor(colors.white)
                 else
-                    print(suggestion[i])
+                    print(suggestions[i])
                 end
             end
         end
