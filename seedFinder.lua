@@ -97,6 +97,7 @@ function main()
     while true do
         local query = readAutocomplete()
         term.clear()
+        term.setCursorPos(1,1)
         print("If the lights would work, you would have Searched for: " .. query)
         os.sleep(10)
     end
