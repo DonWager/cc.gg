@@ -15,7 +15,7 @@ return {
     Lead = {row="front",pos="13",dir="left",light=peripheral.wrap("redstone_relay_85")},
     Zinc = {row="front",pos="14",dir="left",light=peripheral.wrap("redstone_relay_86")},
     ["Refined Obsidian"] = {row="front",pos="15",dir="left",light=peripheral.wrap("redstone_relay_87")},
-    CopperAlloy = {row="front",pos="16",dir="left",light=peripheral.wrap("redstone_relay_88")},
+    ["Copper Alloy"] = {row="front",pos="16",dir="left",light=peripheral.wrap("redstone_relay_88")},
     -- Front Row Right
     Inferium_1 = {row="front",pos="1",dir="right",light=peripheral.wrap("redstone_relay_1")},
     Inferium_3 = {row="front",pos="2",dir="right",light=peripheral.wrap("redstone_relay_89")},
