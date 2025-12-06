@@ -32,6 +32,7 @@ end
 function autocomplete(input)
     local suggestions = {}
     for name, data in ipairs(seedIndex) do
+        print(name)
         if string.sub(name, 1, string.len(input)) == input then
             table.insert(suggestions, name)
         end
@@ -41,10 +42,10 @@ end
 
 function readAutocomplete()
     local input = ""
+    term.clear()
+    term.write("> ")
     while true do
         local event, key = os.pullEvent("char")
-        term.clear()
-        term.setCursorPos(1,1)
         if key == "\n" then
             return input
         elseif key == "\b" then
@@ -54,6 +55,7 @@ function readAutocomplete()
         end
         -- Get suggestions
         local suggestions = autocomplete(input)
+        term.clear()
         if #suggestions > 0 then
             print("suggetions are met")
             for _, suggestion in ipairs(suggestions) do
