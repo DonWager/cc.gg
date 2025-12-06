@@ -53,7 +53,7 @@ function readAutocomplete()
             input = input .. key
             term.write(key) -- Echo the character
         end
-
+        term.write(" " .. input)
         -- Get suggestions
         local suggestions = autocomplete(input)
         if #suggestions > 0 then
@@ -68,6 +68,7 @@ end
 
 
 function main()
+    term.clear()
     while true do
         local query = readAutocomplete()
     end
