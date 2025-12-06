@@ -48,7 +48,7 @@ function readAutocomplete()
         if key == "\n" then
             return input
         elseif key == "\b" then
-            input = input:sub(1, -2) -- Handle backspace
+            local input = string.sub(input, 1, -2) 
         else
             input = input .. key
         end
