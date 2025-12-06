@@ -41,28 +41,29 @@ end
 
 function readAutocomplete()
     local input = ""
-    term.clear()
-    term.setCursorPos(1,1)
-    term.write("> _")
+
     while true do
-        local event, key = os.pullEvent("char")
-        if key == "\n" then
-            return input
-        elseif key == "\b" then
-            input = string.sub(input, 1, -2) 
-        else
-            input = input .. key
+        term.clear()
+        term.setCursorPos(1,1)
+        term.write("> " .. input)
+        local event, a = os.pullEvent()
+        if event == "char" then
+            input = input .. a
+        elseif event == "key" then
+            if a == keys.backspace then
+                if #input > 0 then input = string.sub(input, 1, -2) end
+            elseif a == keys.enter then
+                return input
+            end
         end
         -- Get suggestions
         local suggestions = autocomplete(input)
         term.clear()
         if #suggestions > 0 then
-            print("suggetions are met")
-            for _, suggestion in ipairs(suggestions) do
-                term.write(suggestion .. "\n")
-            end
+            print("")
+            for _, suggestion in ipairs(suggestions) do print(suggestion) end
+            term.setCursorPos(3 + string.len(input), 1)
         end
-    term.write("> " .. input) -- Reprint the prompt with current input
     end
 end
 
@@ -71,6 +72,8 @@ function main()
     term.clear()
     while true do
         local query = readAutocomplete()
+        print("You entered: " .. query)
+        os.sleep(10)
     end
 end
 
