@@ -51,7 +51,7 @@ function readAutocomplete()
         local suggestions = autocomplete(input)
         if #suggestions > 0 then
             print("")
-            for i = 1, min(17, #suggestions) do
+            for i = 1, math.min(17, #suggestions) do
                 if i == selectedSuggestion then
                     term.setBackgroundColor(colors.white)
                     term.setTextColor(colors.black)
