@@ -91,16 +91,19 @@ function readAutocomplete()
 end
 
 function animateRow(row, pos, light)
-    for i=1,pos+2 do
-        if i <= pos then
-            row[i].setOutput("bottom",true)
+    for j=1, 20 do
+        for i=1,pos+2 do
+            if i <= pos then
+                row[i].setOutput("bottom",true)
+            end
+            if i > 2 then
+                row[i-2].setOutput("bottom",false)
+            end
+            light.setOutput("bottom", not light.getOutput("bottom"))
+            os.sleep(0.15)
         end
-        if i > 2 then
-            row[i-2].setOutput("bottom",false)
-        end
-        light.setOutput("bottom", not light.getOutput("bottom"))
-        os.sleep(0.15)
     end
+    lights.setOutput("bottom",false)
 end
 
 function main()
