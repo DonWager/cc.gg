@@ -1,7 +1,7 @@
 return {
     -- Front Row Left
     Inferium = {row="front",pos="1",dir="left",light=peripheral.wrap("redstone_relay_73")},
-    Nether Star = {row="front",pos="2",dir="left",light=peripheral.wrap("redstone_relay_74")},
+    ["Nether Star"] = {row="front",pos="2",dir="left",light=peripheral.wrap("redstone_relay_74")},
     Sheep = {row="front",pos="3",dir="left",light=peripheral.wrap("redstone_relay_75")},
     Soulium = {row="front",pos="4",dir="left",light=peripheral.wrap("redstone_relay_76")},
     Iron = {row="front",pos="5",dir="left",light=peripheral.wrap("redstone_relay_77")},
