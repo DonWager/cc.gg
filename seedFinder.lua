@@ -96,10 +96,10 @@ function animateRow(row, pos, light, sideRow)
         if sideRow then
             for i=1,18 do
                 if i <= pos then
-                    row[i].setAnalogOutput("bottom",1)
+                    firstRow[i].setAnalogOutput("bottom",1)
                 end
                 if i > 1 then
-                    row[i-1].setOutput("bottom",false)
+                    firstRow[i-1].setOutput("bottom",false)
                 end
                 light.setOutput("bottom", not light.getOutput("bottom"))
             end
