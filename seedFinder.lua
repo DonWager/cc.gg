@@ -51,7 +51,7 @@ function readAutocomplete()
         local suggestions = autocomplete(input)
         if #suggestions > 0 then
             print("")
-            for i = 1, #suggestions do
+            for i = 1, min(17, #suggestions) do
                 if i == selectedSuggestion then
                     term.setBackgroundColor(colors.white)
                     term.setTextColor(colors.black)
@@ -82,7 +82,7 @@ function readAutocomplete()
                     return suggestions[selectedSuggestion], seedIndex[suggestions[selectedSuggestion]]
                 end
             elseif a == keys.down then
-                selectedSuggestion = math.min(selectedSuggestion + 1, #suggestions)
+                selectedSuggestion = math.min(selectedSuggestion + 1, #suggestions, 17)
             elseif a == keys.up then
                 selectedSuggestion = math.max(selectedSuggestion - 1, 0)
             end
@@ -91,15 +91,15 @@ function readAutocomplete()
 end
 
 function animateRow(row, pos, light)
-    for i=1,pos+1 do
-        if i ~= pos+1 then
+    for i=1,pos+2 do
+        if i <= pos then
             row[i].setOutput("bottom",true)
         end
-        if i ~= 1 then
-            row[i-1].setOutput("bottom",false)
+        if i > 2 then
+            row[i-2].setOutput("bottom",false)
         end
         light.setOutput("bottom", not light.getOutput("bottom"))
-        os.sleep(0.1)
+        os.sleep(0.15)
     end
 end
 
