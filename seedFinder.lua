@@ -129,13 +129,10 @@ function main()
         if data.row == "front" then
             animateRow(frontRow, data.pos, data.light)
         elseif data.row == "left" then
-            animateRow(frontRow, 16, data.light)
             animateRow(leftRow, data.pos, data.light, true)
         elseif data.row == "right" then
-            animateRow(frontRow, 16, data.light)
             animateRow(rightRow, data.pos, data.light, true)
         elseif data.row == "back" then
-            animateRow(frontRow, 16, data.light)
             animateRow(backRow, data.pos, data.light, true)
         end
     end
